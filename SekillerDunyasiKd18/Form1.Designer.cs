@@ -256,6 +256,7 @@
             btnKaydet.TabIndex = 20;
             btnKaydet.Text = "KAYDET";
             btnKaydet.UseVisualStyleBackColor = true;
+            btnKaydet.Click += btnKaydet_Click;
             // 
             // Form1
             // 

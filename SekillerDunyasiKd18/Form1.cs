@@ -1,3 +1,5 @@
+using System.Drawing.Imaging;
+
 namespace SekillerDunyasiKd18
 {
     public partial class Form1 : Form
@@ -89,6 +91,7 @@ namespace SekillerDunyasiKd18
         private void btnSil_Click(object sender, EventArgs e)
         {
             int sid = lstSekiller.SelectedIndex;
+            if (sid == -1) return;
             sekiller.RemoveAt(sid);
             SekilleriListele();
             lstSekiller.SelectedIndex = Math.Min(sid, sekiller.Count - 1);
@@ -114,6 +117,14 @@ namespace SekillerDunyasiKd18
         private void btnAsagi_Click(object sender, EventArgs e)
         {
             SeciliyiTasi(lstSekiller.SelectedIndex + 1);
+        }
+
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            Bitmap bmp = new Bitmap(pnlCizim.Width, pnlCizim.Height);
+            pnlCizim.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+            string masaustuYolu = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            bmp.Save(masaustuYolu + @"\deneme.png", ImageFormat.Png);
         }
     }
 }
