@@ -3,6 +3,7 @@ namespace SekillerDunyasiKd18
     public partial class Form1 : Form
     {
         List<Sekil> sekiller = new List<Sekil>();
+        readonly Random rnd = new Random();
 
         public Form1()
         {
@@ -57,6 +58,62 @@ namespace SekillerDunyasiKd18
         {
             colorDialog1.ShowDialog();
             pboRenk.BackColor = colorDialog1.Color;
+        }
+
+        private void btnRastgeleEkle_Click(object sender, EventArgs e)
+        {
+            int mx = (int)pnlCizim.Width; // max X
+            int my = (int)pnlCizim.Height; // max Y
+            int mw = (int)pnlCizim.Width; // max width
+            int mh = (int)pnlCizim.Height; // max height
+            int sc = (int)cboTur.Items.Count; // shapes count
+            int mc = 256; // max color
+            int x, y;
+
+            nudX.Value = x = rnd.Next(mx);
+            nudY.Value = y = rnd.Next(my);
+            nudGenislik.Value = rnd.Next(mw - x);
+            nudYukseklik.Value = rnd.Next(mh - y);
+            pboRenk.BackColor = Color.FromArgb(rnd.Next(mc), rnd.Next(mc),
+                rnd.Next(mc), rnd.Next(mc)); // alpha red green blue
+            cboTur.SelectedIndex = rnd.Next(sc);
+            btnEkle.PerformClick();
+        }
+
+        private void btnTemizle_Click(object sender, EventArgs e)
+        {
+            sekiller.Clear();
+            SekilleriListele();
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            int sid = lstSekiller.SelectedIndex;
+            sekiller.RemoveAt(sid);
+            SekilleriListele();
+            lstSekiller.SelectedIndex = Math.Min(sid, sekiller.Count - 1);
+        }
+
+        void SeciliyiTasi(int hedefIndeks)
+        {
+            if (lstSekiller.SelectedItem == null || hedefIndeks < 0 || hedefIndeks >= sekiller.Count)
+                return;
+
+            Sekil secili = (Sekil)lstSekiller.SelectedItem;
+            sekiller.Remove(secili);
+            sekiller.Insert(hedefIndeks, secili);
+            SekilleriListele();
+            lstSekiller.SelectedItem = secili;
+        }
+
+        private void btnYukari_Click(object sender, EventArgs e)
+        {
+            SeciliyiTasi(lstSekiller.SelectedIndex - 1);
+        }
+
+        private void btnAsagi_Click(object sender, EventArgs e)
+        {
+            SeciliyiTasi(lstSekiller.SelectedIndex + 1);
         }
     }
 }

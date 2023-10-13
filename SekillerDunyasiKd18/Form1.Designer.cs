@@ -184,6 +184,7 @@
             btnRastgeleEkle.TabIndex = 13;
             btnRastgeleEkle.Text = "?";
             btnRastgeleEkle.UseVisualStyleBackColor = true;
+            btnRastgeleEkle.Click += btnRastgeleEkle_Click;
             // 
             // btnEkle
             // 
@@ -204,6 +205,7 @@
             btnYukari.Size = new Size(32, 32);
             btnYukari.TabIndex = 15;
             btnYukari.UseVisualStyleBackColor = true;
+            btnYukari.Click += btnYukari_Click;
             // 
             // btnSil
             // 
@@ -214,6 +216,7 @@
             btnSil.Size = new Size(32, 32);
             btnSil.TabIndex = 16;
             btnSil.UseVisualStyleBackColor = true;
+            btnSil.Click += btnSil_Click;
             // 
             // btnAsagi
             // 
@@ -224,6 +227,7 @@
             btnAsagi.Size = new Size(32, 32);
             btnAsagi.TabIndex = 17;
             btnAsagi.UseVisualStyleBackColor = true;
+            btnAsagi.Click += btnAsagi_Click;
             // 
             // pnlCizim
             // 
@@ -242,6 +246,7 @@
             btnTemizle.TabIndex = 19;
             btnTemizle.Text = "TEMİZLE";
             btnTemizle.UseVisualStyleBackColor = true;
+            btnTemizle.Click += btnTemizle_Click;
             // 
             // btnKaydet
             // 
