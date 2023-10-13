@@ -4,7 +4,7 @@ namespace SekillerDunyasiKd18
 {
     public partial class Form1 : Form
     {
-        List<Sekil> sekiller = new List<Sekil>();
+        List<ICizilebilir> cizilebilirler = new List<ICizilebilir>();
         readonly Random rnd = new Random();
 
         public Form1()
@@ -14,8 +14,8 @@ namespace SekillerDunyasiKd18
 
         private void pnlCizim_Paint(object sender, PaintEventArgs e)
         {
-            foreach (var sekil in sekiller)
-                sekil.Ciz(e.Graphics);
+            foreach (var cizilebilir in cizilebilirler)
+                cizilebilir.Ciz(e.Graphics);
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
@@ -39,18 +39,18 @@ namespace SekillerDunyasiKd18
             s.Genislik = (int)nudGenislik.Value;
             s.Yukseklik = (int)nudYukseklik.Value;
             s.Renk = pboRenk.BackColor;
-            sekiller.Add(s);
-            SekilleriListele();
+            cizilebilirler.Add(s);
+            CizilebilirleriListele();
             lstSekiller.SelectedItem = s;
         }
 
-        private void SekilleriListele()
+        private void CizilebilirleriListele()
         {
             lstSekiller.Items.Clear();
 
-            foreach (Sekil sekil in sekiller)
+            foreach (ICizilebilir cizilebilir in cizilebilirler)
             {
-                lstSekiller.Items.Add(sekil);
+                lstSekiller.Items.Add(cizilebilir);
             }
 
             pnlCizim.Refresh();
@@ -84,28 +84,28 @@ namespace SekillerDunyasiKd18
 
         private void btnTemizle_Click(object sender, EventArgs e)
         {
-            sekiller.Clear();
-            SekilleriListele();
+            cizilebilirler.Clear();
+            CizilebilirleriListele();
         }
 
         private void btnSil_Click(object sender, EventArgs e)
         {
             int sid = lstSekiller.SelectedIndex;
             if (sid == -1) return;
-            sekiller.RemoveAt(sid);
-            SekilleriListele();
-            lstSekiller.SelectedIndex = Math.Min(sid, sekiller.Count - 1);
+            cizilebilirler.RemoveAt(sid);
+            CizilebilirleriListele();
+            lstSekiller.SelectedIndex = Math.Min(sid, cizilebilirler.Count - 1);
         }
 
         void SeciliyiTasi(int hedefIndeks)
         {
-            if (lstSekiller.SelectedItem == null || hedefIndeks < 0 || hedefIndeks >= sekiller.Count)
+            if (lstSekiller.SelectedItem == null || hedefIndeks < 0 || hedefIndeks >= cizilebilirler.Count)
                 return;
 
-            Sekil secili = (Sekil)lstSekiller.SelectedItem;
-            sekiller.Remove(secili);
-            sekiller.Insert(hedefIndeks, secili);
-            SekilleriListele();
+            ICizilebilir secili = (ICizilebilir)lstSekiller.SelectedItem;
+            cizilebilirler.Remove(secili);
+            cizilebilirler.Insert(hedefIndeks, secili);
+            CizilebilirleriListele();
             lstSekiller.SelectedItem = secili;
         }
 
@@ -125,6 +125,13 @@ namespace SekillerDunyasiKd18
             pnlCizim.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
             string masaustuYolu = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             bmp.Save(masaustuYolu + @"\deneme.png", ImageFormat.Png);
+        }
+
+        private void btnMetinEkle_Click(object sender, EventArgs e)
+        {
+            Yazi yazi = new Yazi((int)nudX.Value, (int)nudY.Value, txtMetin.Text, pboRenk.BackColor);
+            cizilebilirler.Add(yazi);
+            CizilebilirleriListele();
         }
     }
 }

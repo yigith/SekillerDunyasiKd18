@@ -51,6 +51,9 @@
             btnTemizle = new Button();
             btnKaydet = new Button();
             colorDialog1 = new ColorDialog();
+            label7 = new Label();
+            btnMetinEkle = new Button();
+            txtMetin = new TextBox();
             ((System.ComponentModel.ISupportInitialize)nudX).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudY).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudGenislik).BeginInit();
@@ -62,7 +65,7 @@
             // 
             lstSekiller.FormattingEnabled = true;
             lstSekiller.ItemHeight = 15;
-            lstSekiller.Location = new Point(22, 66);
+            lstSekiller.Location = new Point(22, 115);
             lstSekiller.Name = "lstSekiller";
             lstSekiller.Size = new Size(477, 109);
             lstSekiller.TabIndex = 0;
@@ -104,7 +107,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(149, 18);
+            label3.Location = new Point(178, 18);
             label3.Name = "label3";
             label3.Size = new Size(48, 15);
             label3.TabIndex = 6;
@@ -112,7 +115,7 @@
             // 
             // nudGenislik
             // 
-            nudGenislik.Location = new Point(149, 36);
+            nudGenislik.Location = new Point(178, 36);
             nudGenislik.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             nudGenislik.Name = "nudGenislik";
             nudGenislik.Size = new Size(57, 23);
@@ -122,7 +125,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(212, 18);
+            label4.Location = new Point(241, 18);
             label4.Name = "label4";
             label4.Size = new Size(56, 15);
             label4.TabIndex = 8;
@@ -130,7 +133,7 @@
             // 
             // nudYukseklik
             // 
-            nudYukseklik.Location = new Point(212, 36);
+            nudYukseklik.Location = new Point(241, 36);
             nudYukseklik.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             nudYukseklik.Name = "nudYukseklik";
             nudYukseklik.Size = new Size(57, 23);
@@ -140,7 +143,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(274, 17);
+            label5.Location = new Point(303, 17);
             label5.Name = "label5";
             label5.Size = new Size(58, 15);
             label5.TabIndex = 9;
@@ -151,7 +154,7 @@
             cboTur.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTur.FormattingEnabled = true;
             cboTur.Items.AddRange(new object[] { "Dikdörtgen", "Elips" });
-            cboTur.Location = new Point(275, 35);
+            cboTur.Location = new Point(304, 35);
             cboTur.Name = "cboTur";
             cboTur.Size = new Size(87, 23);
             cboTur.TabIndex = 10;
@@ -159,7 +162,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(366, 17);
+            label6.Location = new Point(147, 18);
             label6.Name = "label6";
             label6.Size = new Size(33, 15);
             label6.TabIndex = 11;
@@ -169,7 +172,7 @@
             // 
             pboRenk.BackColor = Color.Black;
             pboRenk.BorderStyle = BorderStyle.FixedSingle;
-            pboRenk.Location = new Point(368, 35);
+            pboRenk.Location = new Point(149, 36);
             pboRenk.Name = "pboRenk";
             pboRenk.Size = new Size(23, 23);
             pboRenk.TabIndex = 12;
@@ -178,7 +181,7 @@
             // 
             // btnRastgeleEkle
             // 
-            btnRastgeleEkle.Location = new Point(451, 35);
+            btnRastgeleEkle.Location = new Point(397, 36);
             btnRastgeleEkle.Name = "btnRastgeleEkle";
             btnRastgeleEkle.Size = new Size(23, 23);
             btnRastgeleEkle.TabIndex = 13;
@@ -188,11 +191,11 @@
             // 
             // btnEkle
             // 
-            btnEkle.Location = new Point(480, 34);
+            btnEkle.Location = new Point(426, 36);
             btnEkle.Name = "btnEkle";
-            btnEkle.Size = new Size(57, 23);
+            btnEkle.Size = new Size(111, 23);
             btnEkle.TabIndex = 14;
-            btnEkle.Text = "EKLE";
+            btnEkle.Text = "ŞEKİL EKLE";
             btnEkle.UseVisualStyleBackColor = true;
             btnEkle.Click += btnEkle_Click;
             // 
@@ -200,7 +203,7 @@
             // 
             btnYukari.BackgroundImage = (Image)resources.GetObject("btnYukari.BackgroundImage");
             btnYukari.BackgroundImageLayout = ImageLayout.Zoom;
-            btnYukari.Location = new Point(505, 66);
+            btnYukari.Location = new Point(505, 115);
             btnYukari.Name = "btnYukari";
             btnYukari.Size = new Size(32, 32);
             btnYukari.TabIndex = 15;
@@ -211,7 +214,7 @@
             // 
             btnSil.BackgroundImage = (Image)resources.GetObject("btnSil.BackgroundImage");
             btnSil.BackgroundImageLayout = ImageLayout.Zoom;
-            btnSil.Location = new Point(505, 105);
+            btnSil.Location = new Point(505, 154);
             btnSil.Name = "btnSil";
             btnSil.Size = new Size(32, 32);
             btnSil.TabIndex = 16;
@@ -222,7 +225,7 @@
             // 
             btnAsagi.BackgroundImage = (Image)resources.GetObject("btnAsagi.BackgroundImage");
             btnAsagi.BackgroundImageLayout = ImageLayout.Zoom;
-            btnAsagi.Location = new Point(505, 144);
+            btnAsagi.Location = new Point(505, 193);
             btnAsagi.Name = "btnAsagi";
             btnAsagi.Size = new Size(32, 32);
             btnAsagi.TabIndex = 17;
@@ -232,7 +235,7 @@
             // pnlCizim
             // 
             pnlCizim.BackColor = Color.White;
-            pnlCizim.Location = new Point(23, 181);
+            pnlCizim.Location = new Point(23, 230);
             pnlCizim.Name = "pnlCizim";
             pnlCizim.Size = new Size(514, 347);
             pnlCizim.TabIndex = 18;
@@ -240,7 +243,7 @@
             // 
             // btnTemizle
             // 
-            btnTemizle.Location = new Point(23, 534);
+            btnTemizle.Location = new Point(23, 583);
             btnTemizle.Name = "btnTemizle";
             btnTemizle.Size = new Size(77, 23);
             btnTemizle.TabIndex = 19;
@@ -250,7 +253,7 @@
             // 
             // btnKaydet
             // 
-            btnKaydet.Location = new Point(106, 534);
+            btnKaydet.Location = new Point(106, 583);
             btnKaydet.Name = "btnKaydet";
             btnKaydet.Size = new Size(77, 23);
             btnKaydet.TabIndex = 20;
@@ -258,11 +261,40 @@
             btnKaydet.UseVisualStyleBackColor = true;
             btnKaydet.Click += btnKaydet_Click;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(23, 75);
+            label7.Name = "label7";
+            label7.Size = new Size(38, 15);
+            label7.TabIndex = 21;
+            label7.Text = "Metin";
+            // 
+            // btnMetinEkle
+            // 
+            btnMetinEkle.Location = new Point(426, 71);
+            btnMetinEkle.Name = "btnMetinEkle";
+            btnMetinEkle.Size = new Size(111, 23);
+            btnMetinEkle.TabIndex = 22;
+            btnMetinEkle.Text = "METİN EKLE";
+            btnMetinEkle.UseVisualStyleBackColor = true;
+            btnMetinEkle.Click += btnMetinEkle_Click;
+            // 
+            // txtMetin
+            // 
+            txtMetin.Location = new Point(67, 71);
+            txtMetin.Name = "txtMetin";
+            txtMetin.Size = new Size(353, 23);
+            txtMetin.TabIndex = 23;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(558, 570);
+            ClientSize = new Size(558, 618);
+            Controls.Add(txtMetin);
+            Controls.Add(btnMetinEkle);
+            Controls.Add(label7);
             Controls.Add(btnKaydet);
             Controls.Add(btnTemizle);
             Controls.Add(pnlCizim);
@@ -322,5 +354,8 @@
         private Button btnTemizle;
         private Button btnKaydet;
         private ColorDialog colorDialog1;
+        private Label label7;
+        private Button btnMetinEkle;
+        private TextBox txtMetin;
     }
 }
